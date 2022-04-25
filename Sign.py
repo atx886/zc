@@ -101,9 +101,9 @@ def logn():
     global ck
     url1 = 'https://www.chaojijishi.com/api/mobile/send_verification_codes'
     phone = getphone()
-    while phone is None:
-        closeph(phone)
-        phone = getphone()
+#     while phone is None:
+#         closeph(phone)
+#         phone = getphone()
     data = {
         'area_code': '86',
         'mobile': phone,
@@ -118,9 +118,9 @@ def logn():
 
     while p != '请求成功':
         phone = getphone()
-        while phone is None:
-            closeph(phone)
-            phone = getphone()
+#         while phone is None:
+#             closeph(phone)
+#             phone = getphone()
         data['mobile'] = phone
         randomwait()
         r = session.post(url1, data=data)
