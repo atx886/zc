@@ -9,11 +9,11 @@ import re
 from ph import *
 from openpyxl import load_workbook, Workbook
 
+
 # Workbook()方法 不用参数,会新建一个xlsx文件.
 wb = openpyxl.Workbook()
 # save()方法 一个参数,保存路径,会覆盖.
 wb.save('a.xlsx')
-
 
 def randomwait():
     t = random.randint(1, 3)
@@ -104,8 +104,6 @@ def logn():
     while phone is None:
         closeph(phone)
         phone = getphone()
-        if len(phone) < 10:
-            return
     data = {
         'area_code': '86',
         'mobile': phone,
@@ -114,8 +112,6 @@ def logn():
         'timestamp': int(round(time.time() * 1000))
     }
     # 发送验证码
-    if len(phone) < 10:
-        return
     r = session.post(url1, data=data)
     print('验证码方式', r.status_code)
     p = gettext(r)
@@ -125,10 +121,6 @@ def logn():
         while phone is None:
             closeph(phone)
             phone = getphone()
-            if len(phone) < 10:
-                return
-        if len(phone) < 10:
-            return
         data['mobile'] = phone
         randomwait()
         r = session.post(url1, data=data)
@@ -253,7 +245,7 @@ def sign():
 
 i = 0
 x = 0
-while i < 200:
+while i < 2:
     try:
         sign()
         print('已完成', i)
